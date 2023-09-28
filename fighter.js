@@ -3,11 +3,12 @@ class Fighter extends Character {
         super(name, hp, dmg, mana);
         this.specialAttack = "Dark Vision"
         this.boostTurn = -1
+        this.manaCost = 20
     }
     
     useSpecial(foes){
         console.log(`${this.name} use Dark Vision`)
-        this.mana -= 20
+        this.mana -= this.manaCost
         this.boostTurn = game.turnLeft - 1
         this.chooseVictim(foes, 5)
     }

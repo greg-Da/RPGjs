@@ -3,11 +3,12 @@ class Assassin extends Character {
         super(name, hp, dmg, mana);
         this.specialAttack = "Shadow hit"
         this.boostTurn = -1
+        this.manaCost = 20
     }
     
     useSpecial(foes){
         console.log(`${this.name} use Shadow hit`)
-        this.mana -= 20
+        this.mana -= this.manaCost
         this.boostTurn = game.turnLeft - 1
         
         this.chooseVictimSpecial(foes, 7)

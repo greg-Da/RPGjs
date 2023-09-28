@@ -27,17 +27,26 @@ class Game {
             if (elem.hp > 0){
                 console.log(`It's time for ${elem.name} to play`)
                 while(true){
-                    let input = prompt("What do you want to do? \n 0 - Attack \n 1 - Special Attack")
+                    let input = prompt(`What do you want to do? \n 0 - Attack \n 1 - ${elem.specialAttack}`)
+                    
                     if (input === "0"){
+                        
                         elem.chooseVictim(shuffled.filter(e => e !== elem && e.hp > 0).sort())
                         break
-                    }else if(input === "1"){
+
+                    }else if(input === "1" && elem.mana - elem.manaCost < 0){
+                       
+                        console.log('Not enough man')
+                    
+                    }else if(input === "1" && elem.mana - elem.manaCost >= 0){
+                        
                         if (elem.specialAttack === "Heal" || elem.specialAttack === "Rage"){
                             elem.useSpecial()
                         }else{
                             elem.useSpecial(shuffled.filter(e => e !== elem && e.hp > 0).sort())
                         }
                         break
+
                     }else{
                         console.log('wrong action')
                     }
@@ -64,7 +73,7 @@ class Game {
     }
     
     watchStats(){
-        this.players.forEach((elem) => elem.hp > 0 ? console.log(`${elem.name} has ${elem.hp} HP left, ${elem.mana} mana points and deals ${elem.dmg} damages`) : `${elem.name} is dead`)
+        this.players.forEach((elem) => elem.hp > 0 ? console.log(`${elem.constructor.name} - ${elem.name} has ${elem.hp} HP left, ${elem.mana} mana points and deals ${elem.dmg} damages`) : `${elem.name} is dead`)
     }
     
     shuffle(){
