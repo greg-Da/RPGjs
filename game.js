@@ -1,16 +1,21 @@
 class Game {
     constructor(turnLeft = 10){
         this.turnLeft = turnLeft
+        this.players = []
         
     }
     
     startGame(){
-        const fighter = new Fighter
-        const paladin = new Paladin
-        const monk = new Monk
-        const berzerker = new Berzerker
-        const assassin = new Assassin
-        this.players = [fighter, paladin, monk, berzerker, assassin]
+        const type = [Fighter, Paladin, Monk, Berzerker, Assassin, Wizard, Longsword]
+        let name = ["Grace", "Ulder", "Moana", "Draven", "Carl", "Greg", "Jin", "Ally", "Jim", "Dan", "Uldrick", "John", "Val", "Axel"]
+
+        for (let index = 0; index < 5; index++) {
+            let randName = name[Math.floor(Math.random() * type.length)]
+            this.players.push(new type[Math.floor(Math.random() * type.length)](randName))
+            
+            name.splice(name.indexOf(randName), 1)
+        }
+
         this.alivePLayers = this.players
         this.startTurn()
     }

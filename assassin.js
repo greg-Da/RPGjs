@@ -1,7 +1,6 @@
 class Assassin extends Character {
-    constructor(hp = 6, dmg = 6, mana = 20){
-        super(hp, dmg, mana);
-        this.name = "Carl"
+    constructor(name, hp = 6, dmg = 6, mana = 20){
+        super(name, hp, dmg, mana);
         this.specialAttack = "Shadow hit"
         this.boostTurn = -1
     }

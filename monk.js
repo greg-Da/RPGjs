@@ -1,7 +1,6 @@
 class Monk extends Character {
-    constructor(hp = 8, dmg = 2, mana = 200){
-        super(hp, dmg, mana);
-        this.name = "Moana"
+    constructor(name, hp = 8, dmg = 2, mana = 200){
+        super(name, hp, dmg, mana);
         this.specialAttack = "Heal"
     }
     
